@@ -37,15 +37,33 @@ rm -f equip_java7_64.sh
 java -version
 
 # Install Apache ANT
-wget http://apache.mirrors.pair.com/ant/binaries/apache-ant-1.9.4-bin.tar.gz
+echo "Downloading Ant 1.9.4...."
+wget --quiet http://apache.mirrors.pair.com/ant/binaries/apache-ant-1.9.4-bin.tar.gz
 tar xfvz apache-ant-1.9.4-bin.tar.gz
 sudo mv apache-ant-1.9.4 /usr/local
 sudo ln -s /usr/local/apache-ant-1.9.4/bin/ant /usr/bin/ant
 rm apache-ant-1.9.4-bin.tar.gz
 
 # Install Apache Maven
-wget http://supergsego.com/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz
+echo "Downloading Maven 3.3.1...."
+wget --quiet http://supergsego.com/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz
 tar xfvz apache-maven-3.3.1-bin.tar.gz
 sudo mv apache-maven-3.3.1 /usr/local
 sudo ln -s /usr/local/apache-maven-3.3.1/bin/mvn /usr/bin/mvn
 rm apache-maven-3.3.1-bin.tar.gz
+
+# Set Java home
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_65
+
+completion_msg="
+===========================================
+Completed Provision of Java Dev Environment
+===========================================
+Installed are:
+  - Java JDK 7u65
+  - Apache Ant 1.9.4
+  - Maven 3.3.1
+===========================================
+Happy Coding!
+"
+echo "$completion_msg"
