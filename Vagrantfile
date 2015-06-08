@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # 
+  #
   # Mount the M2 Maven repository from host machine
   config.vm.synced_folder "~/.m2/", "/home/vagrant/.m2"
 
@@ -70,11 +70,19 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
-  
-  # Setup Oracle JDK 7, Maven and Ant
+
+  # Setup java development environment
   config.vm.provision "shell", path: "bootstrap_vm.sh"
 
-  
+  # config.vm.provision "puppet" do |puppet|
+  #   puppet.manifests_path = "provision/puppet/manifests"
+  #   puppet.manifest_file = "site.pp"
+  # end
+
+  # # config.vm.provision :jenv do |jenv|
+  # #   jenv.candidates = ['maven 3.1.1','ant 1.9.2']
+  # # end
+
   # config.vm.provision :shell, inline: 'wget --no-check-certificate https://github.com/aglover/ubuntu-equip/raw/master/equip_java7_64.sh && bash equip_java7_64.sh'
 
 end
